@@ -21,9 +21,34 @@ app = Flask(__name__)
 
 
 @app.route("/")
-def hello_world():
+def root():
 	peanut_butter = "Jelly"
 	return render_template("Root.html", peanut_butter=peanut_butter)
+
+
+@app.route("/UpcomingCommunityEvents")
+def upcomingCommunityEvents():
+	peanut_butter = "Jelly"
+	return render_template("Root.html", peanut_butter=peanut_butter)
+
+
+@app.route("/HostAnEvent")
+def hostAnEvent():
+	peanut_butter = "Jelly"
+	return render_template("Root.html", peanut_butter=peanut_butter)
+
+
+@app.route("/FindSupportGroupsNearMe")
+def findSupportGroupsNearMe():
+	peanut_butter = "Jelly"
+	return render_template("Root.html", peanut_butter=peanut_butter)
+
+
+@app.route("/StartASupportGroupOnline")
+def startASupportGroupOnline():
+	peanut_butter = "Jelly"
+	return render_template("Root.html", peanut_butter=peanut_butter)
+
 
 
 app.run(host="localhost", port=80)
