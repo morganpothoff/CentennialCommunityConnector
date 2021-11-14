@@ -12,6 +12,9 @@
 ***********************************************************************************************************************/
 
 
+CREATE DATABASE `CentennialCommunityConnector`;
+
+
 -- State Farm created
 CREATE TABLE `Counselors`
 (
@@ -22,17 +25,6 @@ CREATE TABLE `Counselors`
 	`practice` TEXT NOT NULL,
 	`specialities` TEXT NOT NULL,
 	`title` VARCHAR(64) NOT NULL,
-);
-
-
--- Not directly viewed by the front end
-CREATE TABLE `EventCounselors`
-(
-	`id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	`Counselors.id` BIGINT UNSIGNED NOT NULL,
-	FOREIGN KEY `Counselors.id` REFERENCES `Counselors`(`id`),
-	`Events.id` BIGINT UNSIGNED NOT NULL,
-	FOREIGN KEY `Events.id` REFERENCES `Events`(`id`)
 );
 
 
@@ -57,6 +49,17 @@ CREATE TABLE `Events`
 	`city` VARCHAR(64),
 	`state` CHAR(2) NOT NULL,
 	`zip` CHAR(5) NOT NULL  -- postal zip code
+);
+
+
+-- Not directly viewed by the front end
+CREATE TABLE `EventCounselors`
+(
+	`id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+	`Counselors.id` BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY `Counselors.id` REFERENCES `Counselors`(`id`),
+	`Events.id` BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY `Events.id` REFERENCES `Events`(`id`)
 );
 
 
