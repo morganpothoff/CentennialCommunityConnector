@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-__author__ = "MPZinke"
+__author__ = "MorganPothoff"
 
 ########################################################################################################################
 #                                                                                                                      #
-#   created by: MPZinke                                                                                                #
+#   created by: MorganPothoff                                                                                          #
 #   on 2021.11.13                                                                                                      #
 #                                                                                                                      #
 #   DESCRIPTION:                                                                                                       #
