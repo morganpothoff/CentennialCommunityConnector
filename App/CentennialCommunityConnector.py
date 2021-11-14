@@ -34,8 +34,8 @@ def upcomingCommunityEvents():
 	zip = request.args.get("zip_code", "")
 	if(zip):
 		print(f"Your zip code is {zip}")
-		# events = DB_Connections.SELECT_events_by_zip(zip)
-		events = []
+		events = DB_Connections.SELECT_events_by_zip(zip)
+		print(events)
 		return render_template("UpcomingCommunityEvents.html", events=events, zip_code=zip)
 	
 	return render_template("UpcomingCommunityEvents.html", zip_code=zip)

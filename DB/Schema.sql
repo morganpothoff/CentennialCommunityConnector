@@ -45,6 +45,7 @@ CREATE TABLE `Events`
 	`id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`address` VARCHAR(128),
 	`city` VARCHAR(64),
+	`description` TEXT NOT NULL,
 	`EventsTypes.id` BIGINT UNSIGNED NOT NULL,
 	FOREIGN KEY (`EventsTypes.id`) REFERENCES `EventsTypes`(`id`),
 	`reason` TEXT NOT NULL,

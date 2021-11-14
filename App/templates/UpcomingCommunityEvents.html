@@ -17,10 +17,20 @@
 			</form>
 		{% else %}
 			{% for event in events %}
-				{# EVENT HTML GOES HERE #}
-				{# EVENT HTML GOES HERE #}
-				{# EVENT HTML GOES HERE #}
-				{# EVENT HTML GOES HERE #}
+				<table>
+					<tr>
+						<td>Location</td>
+						<td> {{ event["zip"] }} </td>
+					</tr>
+					<tr>
+						<td>Date</td>
+						<td> {{ event["time"] }} </td>
+					</tr>
+					<tr>
+						<td>Description</td>
+						<td> {{ event["description"] }} </td>
+					</tr>
+				</table>
 			{% endfor %}
 		{% endif %}
 	</body>

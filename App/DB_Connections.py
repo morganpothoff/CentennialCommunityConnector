@@ -69,7 +69,7 @@ def SELECT_requests_by_Event_id(Events_id: int) -> list:
 			"""
 
 	cnx, cursor = DB_CONNECTION()
-	cursor.execute(query, Events_id);
+	cursor.execute(query, (Events_id,));
 	columns = [column[0] for column in cursor._description]
 	return [{column: (row[x] if row[x] else None) for x, column in enumerate(columns)} for row in cursor._rows]
 
@@ -80,18 +80,18 @@ def SELECT_event(Events_id: int) -> dict:
 			"""
 
 	cnx, cursor = DB_CONNECTION()
-	cursor.execute(query, Events_id);
+	cursor.execute(query, (Events_id,));
 	columns = [column[0] for column in cursor._description]
 	return [{column: (row[x] if row[x] else None) for x, column in enumerate(columns)} for row in cursor._rows]
 
 
 def SELECT_events_by_zip(zip: str) -> dict:
 	query =	"""
-			SELECT * FROM `Requests` WHERE `zip` = %s;
+			SELECT * FROM `Events` WHERE `zip` = %s;
 			"""
 
 	cnx, cursor = DB_CONNECTION()
-	cursor.execute(query, zip);
+	cursor.execute(query, (str(zip),));
 	columns = [column[0] for column in cursor._description]
 	return [{column: (row[x] if row[x] else None) for x, column in enumerate(columns)} for row in cursor._rows]
 
@@ -104,7 +104,7 @@ def SELECT_Counselors_by_Events_id(Events_id: int) -> dict:
 			"""
 
 	cnx, cursor = DB_CONNECTION()
-	cursor.execute(query, Events_id);
+	cursor.execute(query, (Events_id,));
 	columns = [column[0] for column in cursor._description]
 	return [{column: (row[x] if row[x] else None) for x, column in enumerate(columns)} for row in cursor._rows]
 
