@@ -1,0 +1,9 @@
+<html>
+	<body>
+		<select>
+			{% for event in event_type %}
+				<option value="{{ event["id"] }}">{{ event["label"] }}</option>
+			{% endfor %}
+		</select>
+	</body>
+</html>

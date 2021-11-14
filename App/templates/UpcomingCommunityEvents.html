@@ -1,0 +1,27 @@
+<html>
+	<body>
+		<h1>
+			{% if(zip_code != "") %}
+				Events for {{ zip_code }}
+			{% else %}
+				Please enter you Zip Code Below
+			{% endif %}					
+		</h1>
+
+		{% if(zip_code == "") %}
+			<form method="GET">
+				<label>
+					Zip Code
+				</label>
+				<input name="zip_code" type="number"/>
+			</form>
+		{% else %}
+			{% for event in events %}
+				{# EVENT HTML GOES HERE #}
+				{# EVENT HTML GOES HERE #}
+				{# EVENT HTML GOES HERE #}
+				{# EVENT HTML GOES HERE #}
+			{% endfor %}
+		{% endif %}
+	</body>
+</html>
