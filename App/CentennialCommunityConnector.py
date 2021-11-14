@@ -15,6 +15,7 @@ __author__ = "MPZinke"
 
 
 from flask import *
+import DB_Connections
 
 
 app = Flask(__name__)
@@ -28,14 +29,20 @@ def root():
 
 @app.route("/UpcomingCommunityEvents")
 def upcomingCommunityEvents():
-	peanut_butter = "Jelly"
-	return render_template("Root.html", peanut_butter=peanut_butter)
+	zip_code = request.args.get("zip_code", "")
+	if(zip_code):
+		print(f"Your zip code is {zip_code}")
+		# events = DB_Connections.SELECT_events_by_zip(zip_code)
+		events = []
+		return render_template("UpcomingCommunityEvents.html", events=events, zip_code=zip_code)
+	
+	return render_template("UpcomingCommunityEvents.html", zip_code=zip_code)
 
 
 @app.route("/HostAnEvent")
 def hostAnEvent():
-	peanut_butter = "Jelly"
-	return render_template("Root.html", peanut_butter=peanut_butter)
+	event_type = [{"label": "asdfg", "id": 1}, {"label": "qwerty", "id": 2}, {"label": "zxcvb", "id": 3}]
+	return render_template("HostAnEvent.html", event_type=event_type)
 
 
 @app.route("/FindSupportGroupsNearMe")
