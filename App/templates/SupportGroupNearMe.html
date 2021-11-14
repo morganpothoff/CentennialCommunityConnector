@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel='stylesheet' href='static/style.css'>
+        <title>Find Support Groups Near Me</title>
+    </head>
+    <header>
+        <a href="/"><img src="https://chambermaster.blob.core.windows.net/images/customers/242/members/6903/logos/MEMBER_PAGE_HEADER/logo.png"></a>
+    </header>
+
+
+    <h3>
+        Find Support Groups Near Me
+    </h3>
+    <body>
+        <div id="find_support_div">
+            <table>
+                <tr>
+                    <td>
+                        <label for="zcode">Zip Code:</label>
+                        <input type="text" id="zcode" name="zcode">    
+                    </td>                  
+                </tr>
+                <tr>
+                    <td>
+                        <label for="start">Start date:</label>
+                        <input type="date" id="start" name="trip-start"       value="2018-07-22"       min="2021-01-01" max="2024-12-31">
+                    </td>                  
+                </tr>
+                <tr>
+                    <td>
+                        <label for="appt">Choose a time for your meeting:</label>
+                        <input type="time" id="appt" name="appt"       min="09:00" max="18:00" required>
+                    </td>                  
+                </tr>                  
+            </table>
+            <button onclick="fake_search()">Search</button>
+        </div>
+
+        <div id="support_groups_div" hidden="true">
+            <table>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>Type</td>
+                                <td>Trauma</td>
+                            </tr>
+                            <tr>
+                                <td>Meeting Time</td>
+                                <td>MWF 18:00 - 19:00</td>
+                            </tr>
+                            <tr>
+                                <td>Location</td>
+                                <td>2.3 Miles Away</td>
+                            </tr>
+                        </table>
+                        <button disabled="true">Registration is closed</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table>
+                            <tr>
+                                <td>Type</td>
+                                <td>Relationship</td>
+                            </tr>
+                            <tr>
+                                <td>Meeting Time</td>
+                                <td>T/TH 20:00 - 21:30</td>
+                            </tr>
+                            <tr>
+                                <td>Location</td>
+                                <td>3.2 Miles Away</td>
+                            </tr>
+                        </table>
+                        <button disabled="true">Registration is closed</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
+</html>
+
+
+<script>
+    
+    function fake_search()
+    {
+        document.getElementById("find_support_div").hidden = true;
+        document.getElementById("support_groups_div").hidden = false;
+    }
+
+
+</script>

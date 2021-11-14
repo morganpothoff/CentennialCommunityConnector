@@ -20,7 +20,7 @@ from datetime import datetime
 import DB_Connections
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path="/static")
 
 
 @app.route("/")
@@ -68,12 +68,12 @@ def hostAnEvent():
 
 @app.route("/FindSupportGroupsNearMe")
 def findSupportGroupsNearMe():
-	return "<p>FindSupportGroupsNearMe is a work in progress</p>"
+	return render_template("SupportGroupNearMe.html")
 
 
 @app.route("/StartASupportGroupOnline")
 def startASupportGroupOnline():
-	return "<p>StartASupportGroupOnline is a work in progress</p>"
+	return render_template("NewSupportGroup.html")
 
 
 @app.route("/login")

@@ -1,0 +1,22 @@
+
+header
+{
+	background-color: rgb(255, 18, 30);
+	border-color: rgb(255, 18, 30);
+	margin:  0px;
+}
+
+
+header > img
+{
+	height:  100px;
+	width: 150px;
+}
+
+
+
+header > a > img
+{
+	height:  100px;
+	width: 150px;
+}
