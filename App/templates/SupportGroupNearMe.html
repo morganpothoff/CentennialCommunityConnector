@@ -26,71 +26,75 @@
     </h3>
     <body>
         <div id="find_support_div">
-            <table>
-                <tr>
-                    <td>
-                        <label for="zcode">Zip Code:</label>
-                        <input type="text" id="zcode" name="zcode">    
-                    </td>                  
-                </tr>
-                <tr>
-                    <td>
-                        <label for="start">Start date:</label>
-                        <input type="date" id="start" name="trip-start"       value="2018-07-22"       min="2021-01-01" max="2024-12-31">
-                    </td>                  
-                </tr>
-                <tr>
-                    <td>
-                        <label for="appt">Choose a time for your meeting:</label>
-                        <input type="time" id="appt" name="appt"       min="09:00" max="18:00" required>
-                    </td>                  
-                </tr>                  
-            </table>
-            <a href="/"><button type="button">Cancel</button></a>
-            <button onclick="fake_search()">Search</button>
+            <div class="fillout">
+                <table>
+                    <tr>
+                        <td>
+                            <label for="zcode">Zip Code:</label>
+                            <input type="text" id="zcode" name="zcode">    
+                        </td>                  
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="start">Start date:</label>
+                            <input type="date" id="start" name="trip-start"       value="2018-07-22"       min="2021-01-01" max="2024-12-31">
+                        </td>                  
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="appt">Choose a time for your meeting:</label>
+                            <input type="time" id="appt" name="appt"       min="09:00" max="18:00" required>
+                        </td>                  
+                    </tr>                  
+                </table>
+                <a href="/"><button type="button">Cancel</button></a>
+                <button onclick="fake_search()">Search</button>
+            </div>
         </div>
 
         <div id="support_groups_div" hidden="true">
-            <table>
-                <tr>
-                    <td>
-                        <table>
-                            <tr>
-                                <td>Type</td>
-                                <td>Trauma</td>
-                            </tr>
-                            <tr>
-                                <td>Meeting Time</td>
-                                <td>MWF 18:00 - 19:00</td>
-                            </tr>
-                            <tr>
-                                <td>Location</td>
-                                <td>2.3 Miles Away</td>
-                            </tr>
-                        </table>
-                        <button disabled="true">Registration is closed</button>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <table>
-                            <tr>
-                                <td>Type</td>
-                                <td>Relationship</td>
-                            </tr>
-                            <tr>
-                                <td>Meeting Time</td>
-                                <td>T/TH 20:00 - 21:30</td>
-                            </tr>
-                            <tr>
-                                <td>Location</td>
-                                <td>3.2 Miles Away</td>
-                            </tr>
-                        </table>
-                        <button disabled="true">Registration is closed</button>
-                    </td>
-                </tr>
-            </table>
+            <div class="fillout">
+                <table>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>Type</td>
+                                    <td style="font-weight: normal;">Trauma</td>
+                                </tr>
+                                <tr>
+                                    <td>Meeting Time</td>
+                                    <td style="font-weight: normal;">MWF 18:00 - 19:00</td>
+                                </tr>
+                                <tr>
+                                    <td>Location</td>
+                                    <td style="font-weight: normal;">2.3 Miles Away</td>
+                                </tr>
+                            </table>
+                            <button disabled="true">Registration is closed</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>Type</td>
+                                    <td style="font-weight: normal;">Relationship</td>
+                                </tr>
+                                <tr>
+                                    <td>Meeting Time</td>
+                                    <td style="font-weight: normal;">T/TH 20:00 - 21:30</td>
+                                </tr>
+                                <tr>
+                                    <td>Location</td>
+                                    <td style="font-weight: normal;">3.2 Miles Away</td>
+                                </tr>
+                            </table>
+                            <button disabled="true">Registration is closed</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </body>
 </html>
