@@ -42,18 +42,19 @@ CREATE TABLE `EventsType`
 CREATE TABLE `Events`
 (
 	`id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-	`reason` TEXT NOT NULL,
-	`EventsType.id` BIGINT UNSIGNED NOT NULL,
-	FOREIGN KEY `EventsType.id` REFERENCES `EventsType`(`id`),
 	`address` VARCHAR(128),
 	`city` VARCHAR(64),
+	`EventsType.id` BIGINT UNSIGNED NOT NULL,
+	FOREIGN KEY `EventsType.id` REFERENCES `EventsType`(`id`),
+	`reason` TEXT NOT NULL,
 	`state` CHAR(2) NOT NULL,
+	`time` DATETIME NOT NULL,
 	`zip` CHAR(5) NOT NULL  -- postal zip code
 );
 
 
 -- Not directly viewed by the front end
-CREATE TABLE `EventCounselors`
+CREATE TABLE `EventsCounselors`
 (
 	`id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`Counselors.id` BIGINT UNSIGNED NOT NULL,
@@ -68,10 +69,12 @@ CREATE TABLE `Request`
 (
 	`id` BIGINT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	`email` VARCHAR(64) NOT NULL,
-	`reason` TEXT NOT NULL,
-	`time` DATETIME NOT NULL,
+	`Events.id` BIGINT UNSIGNED DEFAULT NULL,
+	FOREIGN KEY `Events.id` REFERENCES `Events`(`id`),
 	`EventsType.id` BIGINT UNSIGNED NOT NULL,
 	FOREIGN KEY `EventsType.id` REFERENCES `EventsType`(`id`),
 	`is_virtual` BOOLEAN NOT NULL DEFAULT FALSE
+	`reason` TEXT NOT NULL,
+	`time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	`zip` CHAR(5) NOT NULL  -- postal zip code
 );
