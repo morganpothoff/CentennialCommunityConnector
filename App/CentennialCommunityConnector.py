@@ -25,8 +25,7 @@ app = Flask(__name__)
 
 @app.route("/")
 def root():
-	peanut_butter = "Jelly"
-	return render_template("Root.html", peanut_butter=peanut_butter)
+	return render_template("Root.html")
 
 
 @app.route("/UpcomingCommunityEvents")
@@ -57,9 +56,9 @@ def hostAnEvent():
 
 			DB_Connections.INSERT_request(email, reason, time, EventTypes_id, is_virtual, zip)
 
-			return "<p>Successfully Submitted</p>"
+			return "<p>Successfully Submitted</p><a href='/'>Return to home</a>"
 		except Exception as error:
-			return f"<p>ERROR: {str(error)}</p>"
+			return f"<p>ERROR: {str(error)}</p><a href='/'>Return to home</a>"
 	# GET method
 	else:
 		event_types = DB_Connections.SELECT_eventsTypes()
@@ -75,6 +74,11 @@ def findSupportGroupsNearMe():
 @app.route("/StartASupportGroupOnline")
 def startASupportGroupOnline():
 	return "<p>StartASupportGroupOnline is a work in progress</p>"
+
+
+@app.route("/login")
+def login():
+	return "<p>login is a work in progress</p>"
 
 
 
