@@ -34,20 +34,20 @@
                     </tr>
                     <tr>
                         <td>
-                            <label for="zip_code">Zip Code:</label>
-                            <input type="text" id="zip" name="zip">
+                            <label for="location">Location:</label>
+                            <input type="text" id="location" name="location">
                         </td>                  
                     </tr>
                     <tr>
                         <td>
                             <label for="date">Date:</label>
-                            <input type="date" id="date" name="date">
+                            <input type="text" id="date" name="date">
                         </td>                  
                     </tr>
                     <tr>
                         <td>
                             <label for="time">Time:</label>
-                            <input type="time" id="time" name="time">
+                            <input type="text" id="time" name="time">
                         </td>                  
                     </tr>
                     <tr>
@@ -66,27 +66,6 @@
                         <td>
                             <label for="anotes">Additional Notes:</label>
                             <input type="text" id="anotes" name="anotes">
-                        </td>                  
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="event_type">Event Type:</label>
-                            <select name="event_type">
-                                {% for event_type in event_types %}
-                                    <option value="{{ event_type["id"] }}">
-                                        {{ event_type["label"] }}
-                                    </option>
-                                {% endfor %}
-                            </select>
-                        </td>                 
-                    </tr>
-                    <tr>
-                        <td>
-                            <label for="anotes">Virtual Event:</label>
-                            <select name="is_virtual">
-                                <option value="0">No</option>
-                                <option value="1">Yes</option>
-                            </select>
                         </td>                  
                     </tr>
                 </table>

@@ -28,29 +28,40 @@ def DB_CONNECTION():
 	return cnx, cnx.cursor(buffered=True);
 
 
-def INSERT_request(email: str, reason: str, time: datetime, EventTypes_id: int, is_virtual: bool, zip: int) -> bool:
+def INSERT_request(email: str, reason: str, time: datetime, EventsTypes_id: int, is_virtual: bool, zip: int) -> bool:
 	query =	"""
-			INSERT INTO `Requests` (`email`, `reason`, `time`, `EventTypes_id`, `is_virtual`, `zip`) VALUES
+			INSERT INTO `Requests` (`email`, `reason`, `time`, `EventsTypes.id`, `is_virtual`, `zip`) VALUES
 			(%s, %s, %s, %s, %s, %s);
 			"""
 
 	cnx, cursor = DB_CONNECTION()
-	cursor.execute(query, email, reason, time, EventTypes_id, is_virtual, zip);
+	cursor.execute(query, (email, reason, time, EventsTypes_id, is_virtual, zip,));
 	cnx.commit();
 	return cursor.lastrowid;
 
 
-def INSERT_events(reason: str, EventType_id: int, address: str, state: str, zip: str, time: datetime) -> bool:
+def INSERT_events(reason: str, EventsTypes_id: int, address: str, state: str, zip: str, time: datetime) -> bool:
 	query =	"""
-			INSERT INTO `Events` (`reason`, `EventType_id`, `address`, `state`, `zip`, `time`) VALUES
+			INSERT INTO `Events` (`reason`, `EventsTypes.id`, `address`, `state`, `zip`, `time`) VALUES
 			(%s, %s, %s, %s, %s, %s);
 			"""
 
 	cnx, cursor = DB_CONNECTION()
-	cursor.execute(reason, EventType_id, address, state, zip, time);
+	cursor.execute(query, (reason, EventsTypes_id, address, state, zip, time,));
 	cnx.commit();
 	return cursor.lastrowid;
 	
+
+def SELECT_eventsTypes() -> list:
+	query =	"""
+			SELECT * FROM `EventsTypes`;
+			"""
+
+	cnx, cursor = DB_CONNECTION()
+	cursor.execute(query);
+	columns = [column[0] for column in cursor._description]
+	return [{column: (row[x] if row[x] else None) for x, column in enumerate(columns)} for row in cursor._rows]
+
 
 def SELECT_requests_by_Event_id(Events_id: int) -> list:
 	query =	"""
@@ -60,7 +71,7 @@ def SELECT_requests_by_Event_id(Events_id: int) -> list:
 	cnx, cursor = DB_CONNECTION()
 	cursor.execute(query, Events_id);
 	columns = [column[0] for column in cursor._description]
-	return [{column: (row[x] if row[x] else None) for x, column in enumerate(headers)} for row in cursor._rows]
+	return [{column: (row[x] if row[x] else None) for x, column in enumerate(columns)} for row in cursor._rows]
 
 
 def SELECT_event(Events_id: int) -> dict:
@@ -71,7 +82,7 @@ def SELECT_event(Events_id: int) -> dict:
 	cnx, cursor = DB_CONNECTION()
 	cursor.execute(query, Events_id);
 	columns = [column[0] for column in cursor._description]
-	return [{column: (row[x] if row[x] else None) for x, column in enumerate(headers)} for row in cursor._rows]
+	return [{column: (row[x] if row[x] else None) for x, column in enumerate(columns)} for row in cursor._rows]
 
 
 def SELECT_events_by_zip(zip: str) -> dict:
@@ -82,7 +93,7 @@ def SELECT_events_by_zip(zip: str) -> dict:
 	cnx, cursor = DB_CONNECTION()
 	cursor.execute(query, zip);
 	columns = [column[0] for column in cursor._description]
-	return [{column: (row[x] if row[x] else None) for x, column in enumerate(headers)} for row in cursor._rows]
+	return [{column: (row[x] if row[x] else None) for x, column in enumerate(columns)} for row in cursor._rows]
 
 
 def SELECT_Counselors_by_Events_id(Events_id: int) -> dict:
@@ -95,7 +106,7 @@ def SELECT_Counselors_by_Events_id(Events_id: int) -> dict:
 	cnx, cursor = DB_CONNECTION()
 	cursor.execute(query, Events_id);
 	columns = [column[0] for column in cursor._description]
-	return [{column: (row[x] if row[x] else None) for x, column in enumerate(headers)} for row in cursor._rows]
+	return [{column: (row[x] if row[x] else None) for x, column in enumerate(columns)} for row in cursor._rows]
 
 
 
