@@ -2,19 +2,30 @@
 <html>
     <head>
         <link rel='stylesheet' href='static/style.css'>
-        <title>State Farm</title>
+        <title>New Support Group</title>
     </head>
     <header>
-        <a href="/"><img src="https://chambermaster.blob.core.windows.net/images/customers/242/members/6903/logos/MEMBER_PAGE_HEADER/logo.png"></a>
+        <table>
+            <tr>
+                <td>
+                    <a href="/">
+                        <img src="https://chambermaster.blob.core.windows.net/images/customers/242/members/6903/logos/MEMBER_PAGE_HEADER/logo.png">
+                    </a>
+                </td>
+                <td>
+                    <h1>Centennial Community Connector</h1>
+                </td>
+            </tr>
+        </table>
     </header>
 
 
-    <h3>
-        Start a Support Group Online Now!
-    </h3>
 
     <body>
         <div id="start_support_group">
+        <h3>
+            Start a Support Group Online Now!
+        </h3>
             <table>
                 <tr>
                     <td>
@@ -71,13 +82,26 @@
                     </td>                  
                 </tr>
             </table>
+            <a href="/"><button type="button">Cancel</button></a>
             <button onclick="fake_create()">Create</button>
         </div>
 
-        <div id="success_div">
+        <div id="success_div" hidden="true">
             <h3>
                 Thank you for your contribution to the community!
             </h3>
         </div>
     </body>
 </html>
+
+
+<script>
+    
+    function fake_create()
+    {
+        document.getElementById("start_support_group").hidden = true;
+        document.getElementById("success_div").hidden = false;
+    }
+
+
+</script>

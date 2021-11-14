@@ -1,13 +1,22 @@
 
 header
 {
-	background-color: rgb(255, 18, 30);
-	border-color: rgb(255, 18, 30);
+	background-color: rgb(230, 40, 40);
+	border-color: rgb(230, 40, 40);
 	margin:  0px;
+	color: #EEEEEE;
 }
 
 
-header > img
+header > table > tbody > tr > td > h1
+{
+	color: #EEEEEE;
+}
+
+
+
+
+header > table > tbody > tr > td > img
 {
 	height:  100px;
 	width: 150px;
@@ -15,8 +24,49 @@ header > img
 
 
 
-header > a > img
+header > table > tbody > tr > td > a > img
 {
 	height:  100px;
 	width: 150px;
+}
+
+
+button
+{
+	border: 2px solid #666666;
+	border-radius: 5px;
+	margin: 12px;
+	margin-bottom: 4px;
+	margin-top: 4px;
+	background-color: rgb(230, 40, 40);
+	color: #EEEEEE;
+	padding: 8px;
+}
+
+
+input
+{
+	border: 2px solid #666666;
+	border-radius: 5px;
+	margin: 12px;
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+
+
+select
+{
+	border: 2px solid #666666;
+	border-radius: 5px;
+	margin: 12px;
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+
+
+
+tr > td:nth-child(odd)
+{
+	vertical-align: text-top;
+	font-weight: bold;
 }

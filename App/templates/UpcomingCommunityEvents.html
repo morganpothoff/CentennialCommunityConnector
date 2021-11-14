@@ -2,10 +2,21 @@
 
 	<head>
 		<link rel='stylesheet' href='static/style.css'>
-		<title>State Farm</title>
+		<title>Upcoming Communicty Events</title>
 	</head>
     <header>
-        <a href="/"><img src="https://chambermaster.blob.core.windows.net/images/customers/242/members/6903/logos/MEMBER_PAGE_HEADER/logo.png"></a>
+        <table>
+            <tr>
+                <td>
+                    <a href="/">
+                        <img src="https://chambermaster.blob.core.windows.net/images/customers/242/members/6903/logos/MEMBER_PAGE_HEADER/logo.png">
+                    </a>
+                </td>
+                <td>
+                    <h1>Centennial Community Connector</h1>
+                </td>
+            </tr>
+        </table>
     </header>
 
 
@@ -29,6 +40,7 @@
 						<option value="{{ zip_code }}">
 					{% endfor %}
 				</datalist>
+				<button>Search</button>
 			</form>
 		{% else %}
 			{% for event in events %}
@@ -41,39 +53,44 @@
 						<td>Description</td>
 						<td> {{ event["description"] }} </td>
 					</tr>
-					<tr>
-						<td>Counselors</td>
-						<td> 
-							<table>
-								{% for counselor in event["counselors"] %}
-									<tr>
-										<table>
-											<tr>
-												<td colspan='2'> {{ counselor["name"] }}, {{ counselor["title"] }} </td>
-											</tr>
-											<tr>
-												<td> Practice </td>
-												<td> {{ counselor["practice"] }} </td>
-											</tr>
-											<tr>
-												<td> Education </td>
-												<td> {{ counselor["education"] }} </td>
-											</tr>
-											<tr>
-												<td> Description </td>
-												<td> {{ counselor["description"] }} </td>
-											</tr>
-											<tr>
-												<td> Specialties </td>
-												<td> {{ counselor["specialties"] }} </td>
-											</tr>
-										</table>
-									</tr>
-								{% endfor %}
-							</table>
-						</td>
-					</tr>
+					{% if(event["counselors"]|length > 0) %}
+						<tr>
+							<td>Counselors</td>
+							<td> 
+								<table>
+									{% for counselor in event["counselors"] %}
+										<tr width="100%">
+											<td width="100%">
+												<table style="border-bottom: 3px solid #666666;" width="100%">
+													<tr>
+														<td colspan='2'> {{ counselor["name"] }}, {{ counselor["title"] }} </td>
+													</tr>
+													<tr>
+														<td> Practice </td>
+														<td> {{ counselor["practice"] }} </td>
+													</tr>
+													<tr>
+														<td> Education </td>
+														<td> {{ counselor["education"] }} </td>
+													</tr>
+													<tr>
+														<td> Description </td>
+														<td> {{ counselor["description"] }} </td>
+													</tr>
+													<tr>
+														<td> Specialties </td>
+														<td> {{ counselor["specialties"] }} </td>
+													</tr>
+												</table>
+											</td>
+										</tr>
+									{% endfor %}
+								</table>
+							</td>
+						</tr>
+					{% endif %}
 				</table>
+				<a href="./UpcomingCommunityEvents"><button>Back</button></a>
 			{% endfor %}
 		{% endif %}
 	</body>
