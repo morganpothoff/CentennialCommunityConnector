@@ -45,56 +45,63 @@
 				</form>
 			</div>
 		{% else %}
-			{% for event in events %}
-				<div class="fillout">
-					<table>
-						<tr>
-							<td>Date</td>
-							<td> {{ event["time"] }} </td>
-						</tr>
-						<tr>
-							<td>Description</td>
-							<td> {{ event["description"] }} </td>
-						</tr>
-						{% if(event["counselors"]|length > 0) %}
+			{% if(events|length > 0) %}
+				{% for event in events %}
+					<div class="fillout">
+						<table>
 							<tr>
-								<td>Counselors</td>
-								<td> 
-									<table>
-										{% for counselor in event["counselors"] %}
-											<tr width="100%">
-												<td width="100%">
-													<table style="border-bottom: 3px solid #666666;" width="100%">
-														<tr>
-															<td colspan='2'> {{ counselor["name"] }}, {{ counselor["title"] }} </td>
-														</tr>
-														<tr>
-															<td> Practice </td>
-															<td> {{ counselor["practice"] }} </td>
-														</tr>
-														<tr>
-															<td> Education </td>
-															<td> {{ counselor["education"] }} </td>
-														</tr>
-														<tr>
-															<td> Description </td>
-															<td> {{ counselor["description"] }} </td>
-														</tr>
-														<tr>
-															<td> Specialties </td>
-															<td> {{ counselor["specialties"] }} </td>
-														</tr>
-													</table>
-												</td>
-											</tr>
-										{% endfor %}
-									</table>
-								</td>
+								<td>Date</td>
+								<td> {{ event["time"] }} </td>
 							</tr>
-						{% endif %}
-					</table>
+							<tr>
+								<td>Description</td>
+								<td> {{ event["description"] }} </td>
+							</tr>
+							{% if(event["counselors"]|length > 0) %}
+								<tr>
+									<td>Counselors</td>
+									<td> 
+										<table>
+											{% for counselor in event["counselors"] %}
+												<tr width="100%">
+													<td width="100%">
+														<table style="border-bottom: 3px solid #666666;" width="100%">
+															<tr>
+																<td colspan='2'> {{ counselor["name"] }}, {{ counselor["title"] }} </td>
+															</tr>
+															<tr>
+																<td> Practice </td>
+																<td> {{ counselor["practice"] }} </td>
+															</tr>
+															<tr>
+																<td> Education </td>
+																<td> {{ counselor["education"] }} </td>
+															</tr>
+															<tr>
+																<td> Description </td>
+																<td> {{ counselor["description"] }} </td>
+															</tr>
+															<tr>
+																<td> Specialties </td>
+																<td> {{ counselor["specialties"] }} </td>
+															</tr>
+														</table>
+													</td>
+												</tr>
+											{% endfor %}
+										</table>
+									</td>
+								</tr>
+							{% endif %}
+						</table>
+					</div>
+				{% endfor %}
+			{% else %}
+				<div class="description">
+					There does not appear to be any events for that zip code.
+					Would you like to <a href="/HostAnEvent">request one</a>?
 				</div>
-			{% endfor %}
+			{% endif %}
 			<a href="./UpcomingCommunityEvents"><button>Back</button></a>
 		{% endif %}
 	</body>
