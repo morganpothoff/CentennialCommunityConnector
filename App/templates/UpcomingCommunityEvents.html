@@ -13,15 +13,16 @@
 				<label>
 					Zip Code
 				</label>
-				<input name="zip_code" type="number"/>
+				<input id="zip_code" name="zip_code" list="zip_codes" autocomplete="off">
+				<datalist id="zip_codes" autocomplete="off">
+					{% for zip_code in zip_codes %}
+						<option value="{{ zip_code }}">
+					{% endfor %}
+				</datalist>
 			</form>
 		{% else %}
 			{% for event in events %}
 				<table>
-					<tr>
-						<td>Location</td>
-						<td> {{ event["zip"] }} </td>
-					</tr>
 					<tr>
 						<td>Date</td>
 						<td> {{ event["time"] }} </td>
@@ -29,6 +30,38 @@
 					<tr>
 						<td>Description</td>
 						<td> {{ event["description"] }} </td>
+					</tr>
+					<tr>
+						<td>Counselors</td>
+						<td> 
+							<table>
+								{% for counselor in event["counselors"] %}
+									<tr>
+										<table>
+											<tr>
+												<td colspan='2'> {{ counselor["name"] }}, {{ counselor["title"] }} </td>
+											</tr>
+											<tr>
+												<td> Practice </td>
+												<td> {{ counselor["practice"] }} </td>
+											</tr>
+											<tr>
+												<td> Education </td>
+												<td> {{ counselor["education"] }} </td>
+											</tr>
+											<tr>
+												<td> Description </td>
+												<td> {{ counselor["description"] }} </td>
+											</tr>
+											<tr>
+												<td> Specialties </td>
+												<td> {{ counselor["specialties"] }} </td>
+											</tr>
+										</table>
+									</tr>
+								{% endfor %}
+							</table>
+						</td>
 					</tr>
 				</table>
 			{% endfor %}

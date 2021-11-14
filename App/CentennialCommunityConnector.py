@@ -33,12 +33,14 @@ def root():
 def upcomingCommunityEvents():
 	zip = request.args.get("zip_code", "")
 	if(zip):
-		print(f"Your zip code is {zip}")
 		events = DB_Connections.SELECT_events_by_zip(zip)
-		print(events)
+		for event in events:
+			event["counselors"] = DB_Connections.SELECT_Counselors_by_Events_id(event["id"])
+
 		return render_template("UpcomingCommunityEvents.html", events=events, zip_code=zip)
 	
-	return render_template("UpcomingCommunityEvents.html", zip_code=zip)
+	zip_codes = DB_Connections.SELECT_unique_zip_codes()
+	return render_template("UpcomingCommunityEvents.html", zip_code=zip, zip_codes=zip_codes)
 
 
 @app.route("/HostAnEvent", methods=["GET", "POST"])
@@ -67,16 +69,12 @@ def hostAnEvent():
 
 @app.route("/FindSupportGroupsNearMe")
 def findSupportGroupsNearMe():
-	peanut_butter = "Jelly"
-
-	event_type = [{"label": "asdfg", "id": 1}, {"label": "qwerty", "id": 2}, {"label": "zxcvb", "id": 3}]
-	return render_template("Root.html", peanut_butter=peanut_butter)
+	return "<p>FindSupportGroupsNearMe is a work in progress</p>"
 
 
 @app.route("/StartASupportGroupOnline")
 def startASupportGroupOnline():
-	peanut_butter = "Jelly"
-	return render_template("Root.html", peanut_butter=peanut_butter)
+	return "<p>StartASupportGroupOnline is a work in progress</p>"
 
 
 

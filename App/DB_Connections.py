@@ -99,7 +99,7 @@ def SELECT_events_by_zip(zip: str) -> dict:
 def SELECT_Counselors_by_Events_id(Events_id: int) -> dict:
 	query =	"""
 			SELECT * FROM `Counselors`
-			JOIN `EventsCounselors` ON `Counselors`.`Counselors.id` = `EventsCounselors`.`Events.id`
+			JOIN `EventsCounselors` ON `Counselors`.`id` = `EventsCounselors`.`Counselors.id`
 			WHERE `EventsCounselors`.`Events.id` = %s;
 			"""
 
@@ -107,6 +107,16 @@ def SELECT_Counselors_by_Events_id(Events_id: int) -> dict:
 	cursor.execute(query, (Events_id,));
 	columns = [column[0] for column in cursor._description]
 	return [{column: (row[x] if row[x] else None) for x, column in enumerate(columns)} for row in cursor._rows]
+
+
+def SELECT_unique_zip_codes() -> list:
+	query =	"""
+			SELECT `zip` FROM `Events` GROUP BY `zip`;
+			"""
+
+	cnx, cursor = DB_CONNECTION()
+	cursor.execute(query);
+	return [row[0] for row in cursor._rows]
 
 
 

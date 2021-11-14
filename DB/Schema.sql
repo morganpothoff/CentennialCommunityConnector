@@ -2,7 +2,7 @@
 
 /***********************************************************************************************************************
 *                                                                                                                      *
-*   created by:                                                                                                        *
+*   created by: Morgan Pothoff                                                                                         *
 *   on 2021.11.13                                                                                                      *
 *                                                                                                                      *
 *   DESCRIPTION:                                                                                                       *
@@ -24,7 +24,7 @@ CREATE TABLE `Counselors`
 	`education` TEXT NOT NULL,
 	`name` VARCHAR(128) NOT NULL,
 	`practice` TEXT NOT NULL,
-	`specialities` TEXT NOT NULL,
+	`specialties` TEXT NOT NULL,
 	`title` VARCHAR(64) NOT NULL
 );
 
